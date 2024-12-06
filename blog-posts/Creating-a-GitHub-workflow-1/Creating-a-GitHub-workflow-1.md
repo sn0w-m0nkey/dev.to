@@ -1,7 +1,7 @@
 ---
 published: false
-title: 'Creating a GitHub workflow to deploy a .NET Core app to an Azure App Service - Part 1: The Basics...'
-#cover_image: 'https://raw.githubusercontent.com/YOUR-USERNAME/YOUR-REPO/master/blog-posts/NAME-OF-YOUR-BLOG-POST/assets/your-asset.png'
+title: 'Creating a GitHub workflow to deploy a .NET Core app to an Azure App Service - Part 1: The Basics'
+cover_image: 'https://raw.githubusercontent.com/YOUR-USERNAME/YOUR-REPO/master/blog-posts/NAME-OF-YOUR-BLOG-POST/assets/your-asset.png'
 description: 'Description of the article'
 tags: githubactinos, netcore, github, azure
 series:

@@ -3,7 +3,9 @@
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
 name: CI
 
-on: [push]
+on:
+  #  push:
+    workflow_dispatch:
 
 jobs:
   build:

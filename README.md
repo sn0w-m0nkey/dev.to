@@ -1,3 +1,6 @@
+# https://dev.to/maxime1992/manage-your-dev-to-blog-posts-from-a-git-repo-and-use-continuous-deployment-to-auto-publish-update-them-143j
+# https://dev.to/beeman/automate-your-dev-posts-using-github-actions-4hp3
+
 # One way publishing of your blog posts from a git repo to dev.to
 
 This repo is just a template to help you get started quickly. If you're looking for an example of a repo using it, have a look here: https://github.com/maxime1992/my-dev.to
