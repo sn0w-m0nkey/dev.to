@@ -3,10 +3,13 @@ published: false
 title: 'Creating a GitHub workflow to deploy a .NET Core app to an Azure App Service - Part 1: The Basics'
 cover_image: 'https://raw.githubusercontent.com/YOUR-USERNAME/YOUR-REPO/master/blog-posts/NAME-OF-YOUR-BLOG-POST/assets/your-asset.png'
 description: 'Description of the article'
-tags: githubactinos, netcore, github, azure
+tags: githubactions, netcore, github, azure
 series:
 canonical_url:
----
+--- 
+
+Part 1
+[Part 2](INSERT_LINK_ HERE) TODO
 
 When learning how to deploy .NET apps to Azure I struggled to find to find quality resources specific to my needs. I couldn't find one single resorce with a solid example of what I wanted.
 
