@@ -9,44 +9,69 @@ canonical_url:
 ---
 
 [Part 1](INSERT_LINK_ HERE) TODO
+
 Part 2
 
-As soon as I finished the basic workflow in [Part 1](INSERT_LINK_HERE) TODO, I wanted to learn more so I immediately began working on adding testing. I then separated the code into different jobs (or methods, or function chaining in Azure terms) to make it more readable and also to group relevant code together. It also means the separate jobs could be put into separate files to make them reusable and reduce conflicts if worked on by different people if required.
+As soon as I finished the basic workflow in [Part 1](INSERT_LINK_HERE) TODO, I wanted to learn more so I immediately began working on adding testing. I then separated the code into different jobs (or synchronous methods, or function chaining in Azure terms) to make it more readable and also to group relevant code together. It also means the separate jobs could be put into separate files to make them reusable and reduce conflicts if worked on by different people if required.
 
-If you feel some explanation is missing from a code block, check [Part 1](INSERT_LINK_HERE) TODO (or comment) as I'm not going to repeat myself and possibly end up having to change in 2 places. Some of **build** is new, **tests** is obviously all new*, and some of **deploy** is new.
+If you feel some explanation is missing from a code block, check [Part 1](INSERT_LINK_HERE) TODO (or comment) as I'm not going to repeat myself and possibly end up having to change text in 2 places. Some of **build** is new, **tests** is obviously all new*, and some of **deploy** is new.
 
 ## New Workflow
 
-Create a new job copying everything from [Part 1](INSERT_LINK_HERE) TODO above and including `jobs` to my new workflow, except for the `name:` which you can change to anything you want.
+Create a new workflow copying everything from [Part 1](INSERT_LINK_HERE) TODO above and including **jobs** to your new workflow, and change the `name:` to anything you want.
 
-## Creating Steps
+```
+name: deploy with testing
 
-Creat three different steps: build, tests & deploy.
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
-Change `build-and-deploy:` to `build:` for the first job, and then add two more jobs below it called `tests` and `deploy`.
+jobs:
+```
+
+
+## Creating Jobs
+
+Creat three different jobs: `build`, `tests` & `deploy`.
+
+```
+jobs:
+  build:
+
+  test:
+
+  deploy:
+```
 
 By doing this, instead of getting a simple workflow loking like this in GitHub actions:
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/77ikef2jsy1l2uachl4h.png)
+
+![Single job](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/77ikef2jsy1l2uachl4h.png)
 
 You'll get something a little more detailed like this:
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/lk89wd7jjjm8v8yyab5z.png)
+
+![Multiple jobs](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/lk89wd7jjjm8v8yyab5z.png)
 
 Which means you'll instantly be able to see which part of a process an error occurred or where your workflow problems are.
 
-Add the following under each **Job**
+Add the following under each **Job**.
 
 ```
     runs-on: ubuntu-latest
-
+ 
     steps:
 ```
+
+We'll add the steps for each job next.
 
 
 ## Build Job
 
-#### Fetch the code from your repository
+### Fetch the code from your repository
 
-Add the following code from [Part 1](INSERT_LINK_HERE) under the **build** step.
+Add the following code from [Part 1](INSERT_LINK_HERE) as the first **build** step.
 
 ```
       - name: Checkout code
@@ -58,9 +83,10 @@ Add the following code from [Part 1](INSERT_LINK_HERE) under the **build** step.
           dotnet-version: '8.x'
 ```
 
-#### Set up dependancy caching
 
-This **step** is new. It caches the nuget dependencies required for multiple steps to be cached to speed things up.
+### Set up dependancy caching
+
+Cache dependencies or build outputs to speed up future workflow runs.
 
 ```
       - name: Set up dependency caching for faster builds
@@ -72,7 +98,10 @@ This **step** is new. It caches the nuget dependencies required for multiple ste
             ${{ runner.os }}-nuget-
 ```
 
-#### Restore dependencies, build the project
+
+### Restore dependencies, build the project
+
+This step was in [Part 1](INSERT_LINK_HERE).
 
 ```
       - name: Restore dependencies
@@ -82,10 +111,10 @@ This **step** is new. It caches the nuget dependencies required for multiple ste
         run: dotnet publish -c Release -o ./publish
 ```
 
-#### Upload Artifact
 
-This **step** is also new. 
-It saves the published built so that it can be used by other steps without checking it out and downloading it, restoring dependencies, and building it all over agian.
+### Upload Artifact
+
+Save the published build artifact so that it can be used by other steps without checking it out and downloading it, restoring dependencies, and building it all over agian.
 
 ```
       - name: Upload artifact for deployment job
@@ -95,11 +124,16 @@ It saves the published built so that it can be used by other steps without check
           path: ./publish
 ```
 
-### Tests Job
 
-#### Tests 1
+## Tests Job
 
-Update the
+### Update the configuration
+
+In the **tests** job, add the following code to the **configuration** section under the `runs-on: ubuntu-latest` line that you added earlier.
+
+The `needs:` line defines a **job** that is required to end before this job starts. Think of synchronous programming.
+
+The `permissions` line is required to create the test results file which will be saved on GitHub and used for upcoming steps.
 
 ```
     runs-on: ubuntu-latest
@@ -107,18 +141,72 @@ Update the
     permissions: write-all
 ```
 
-#### Tests 2
 
-#### Tests 3
+### Download the artifact
+
+Download the built artifact we uploaded in the **build** step, reducing the need to do the whole checkout and build process again.
+
+```
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: .net-app
+```
 
 
-### Deploy Job
+### Run your tests
 
-#### Deploy 1
+Run your test project. Change `Tests.dll` to the name of your test project.
 
-#### Deploy 2
+The test results will be saved in a file called `test_results.trx` to be used in upcoming steps.
 
-#### Deploy 3
+```
+      - name: Run Tests from Artifact
+        run: dotnet test Tests.dll --logger "trx;LogFileName=test_results.trx" --results-directory ./TestResults
+```
 
 
-### The end result
+### Upload test results to the workflow run in a zip file
+
+Upload the test results to the workflow run in a zip file that you can download.
+
+This step is optional and you may prefer to use the following step.
+
+```
+      - name: Upload test results to the workflow run in a zip file
+        uses: actions/upload-artifact@v4 
+        if: ${{ always() }} # Always run this step even if tests fail
+        with:
+          name: test-results
+          path: ./TestResults/*.trx
+```
+
+
+### Add test results to the workflow run as a new Job
+
+Add a new job to the workflow run called Test Results so that the tests can be viewed easily and in detail in the workflow run on GitHub.
+
+![Test Results Job](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4im8jv7jkr2lo1b1w0od.png)
+
+```
+      - name: Add Dorny test results to the workflow run
+        uses: dorny/test-reporter@v1
+        if: always()  # Always run this step even if tests fail
+        with:
+          name: Test Results
+          artifact: test-results
+          path: "**/*.trx"  # Path to the TRX test result files created by 'dotnet test'
+          reporter: dotnet-trx  # Use the .NET TRX parser
+          fail-on-error: false  # Don't fail the workflow if the report has issues
+```
+
+## Deploy Job
+
+### Deploy 1
+
+### Deploy 2
+
+### Deploy 3
+
+
+## The end result

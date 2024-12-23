@@ -8,8 +8,9 @@ series:
 canonical_url:
 --- 
 
-Part 1
-[Part 2](INSERT_LINK_ HERE) TODO
+[//]: <> (Part 1)
+
+[//]: <> (Part 2)
 
 When learning how to deploy .NET apps to Azure I struggled to find to find quality resources specific to my needs. I couldn't find one single resorce with a solid example of what I wanted.
 
