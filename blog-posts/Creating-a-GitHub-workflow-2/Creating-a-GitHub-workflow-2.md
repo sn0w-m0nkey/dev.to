@@ -13,6 +13,8 @@ Part 2
 
 As soon as I finished the basic workflow in [Part 1](INSERT_LINK_HERE) TODO, I wanted to learn more so I immediately began working on adding testing. I then separated the code into different jobs (or methods, or function chaining in Azure terms) to make it more readable and also to group relevant code together. It also means the separate jobs could be put into separate files to make them reusable and reduce conflicts if worked on by different people if required.
 
+If you feel some explanation is missing from a code block, check [Part 1](INSERT_LINK_HERE) TODO (or comment) as I'm not going to repeat myself and possibly end up having to change in 2 places. Some of **build** is new, **tests** is obviously all new*, and some of **deploy** is new.
+
 ## New Workflow
 
 Create a new job copying everything from [Part 1](INSERT_LINK_HERE) TODO above and including `jobs` to my new workflow, except for the `name:` which you can change to anything you want.
@@ -42,10 +44,9 @@ Add the following under each **Job**
 
 ## Build Job
 
-#### Fetch the code from your repository from 
+#### Fetch the code from your repository
 
-Add the following code  under the **build** `step:`. 
-
+Add the following code from [Part 1](INSERT_LINK_HERE) under the **build** step.
 
 ```
       - name: Checkout code
@@ -57,14 +58,54 @@ Add the following code  under the **build** `step:`.
           dotnet-version: '8.x'
 ```
 
-#### Build 2
+#### Set up dependancy caching
 
-#### Build 3
+This **step** is new. It caches the nuget dependencies required for multiple steps to be cached to speed things up.
 
+```
+      - name: Set up dependency caching for faster builds
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+```
+
+#### Restore dependencies, build the project
+
+```
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build the project
+        run: dotnet publish -c Release -o ./publish
+```
+
+#### Upload Artifact
+
+This **step** is also new. 
+It saves the published built so that it can be used by other steps without checking it out and downloading it, restoring dependencies, and building it all over agian.
+
+```
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: .net-app
+          path: ./publish
+```
 
 ### Tests Job
 
 #### Tests 1
+
+Update the
+
+```
+    runs-on: ubuntu-latest
+    needs: build
+    permissions: write-all
+```
 
 #### Tests 2
 

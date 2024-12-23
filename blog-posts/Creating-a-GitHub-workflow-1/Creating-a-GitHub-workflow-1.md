@@ -68,7 +68,7 @@ jobs:
 
 #### Fetch the code from your repository
 ```
-      - name: Checkout code
+      - name: Checkout codedepen
         uses: actions/checkout@v4
 ```
 
