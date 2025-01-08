@@ -1,6 +1,6 @@
 ---
 published: false
-title: 'Creating a GitHub workflow to deploy a .NET Core app to an Azure App Service - Part 1: The Basics'
+title: 'Creating a basic GitHub workflow for Azure App Services'
 cover_image: 'https://raw.githubusercontent.com/sn0w-m0nkey/dev.to/refs/heads/master/blog-posts/Creating-a-GitHub-workflow-1/assets/GitHub_Logo_Banner.png'
 description: ''
 tags: githubactions, netcore, github, azure
