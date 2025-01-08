@@ -1,16 +1,14 @@
 ---
 published: false
 title: 'Creating a GitHub workflow to deploy a .NET Core app to an Azure App Service - Part 2: Adding Testing'
-cover_image: 'https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v118uwsm6grd6w9tjzkp.png'
-description: 'Description of the article'
+cover_image: 'https://raw.githubusercontent.com/sn0w-m0nkey/dev.to/refs/heads/master/blog-posts/Creating-a-GitHub-workflow-2/assets/GitHub_Logo_Banner.png'
+description: ''
 tags: githubactions, netcore, github, azure
-series:
+series: 'GitHub workflows'
 canonical_url:
 ---
 
-[Part 1](INSERT_LINK_ HERE) TODO
-
-Part 2
+If you haven't already, check out part 1 of this post: [Part 1](INSERT_LINK_ HERE) TODO
 
 As soon as I finished the basic workflow in [Part 1](INSERT_LINK_HERE) TODO, I wanted to learn more so I immediately began working on adding testing. I then separated the code into different jobs (or synchronous methods, or function chaining in Azure terms) to make it more readable and also to group relevant code together. It also means the separate jobs could be put into separate files to make them reusable and reduce conflicts if worked on by different people if required.
 
@@ -46,13 +44,13 @@ jobs:
   deploy:
 ```
 
-By doing this, instead of getting a simple workflow loking like this in GitHub actions:
+By doing this, instead of getting a simple workflow looking like this in GitHub actions:
 
-![Single job](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/77ikef2jsy1l2uachl4h.png)
+![Single Job](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/p9nmh147nz2x06kma2ui.png 'Single Job')
 
 You'll get something a little more detailed like this:
 
-![Multiple jobs](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/lk89wd7jjjm8v8yyab5z.png)
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1o6sbkxhxxgavvk1e8yr.png)
 
 Which means you'll instantly be able to see which part of a process an error occurred or where your workflow problems are.
 
@@ -186,7 +184,7 @@ This step is optional and you may prefer to use the following step.
 
 Add a new job to the workflow run called Test Results so that the tests can be viewed easily and in detail in the workflow run on GitHub.
 
-![Test Results Job](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4im8jv7jkr2lo1b1w0od.png)
+![ITest Results](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wz7sv73jvcfj8j8n3698.png 'Test Results')
 
 ```
       - name: Add Dorny test results to the workflow run

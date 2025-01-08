@@ -1,16 +1,12 @@
 ---
 published: false
 title: 'Creating a GitHub workflow to deploy a .NET Core app to an Azure App Service - Part 1: The Basics'
-cover_image: 'https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v118uwsm6grd6w9tjzkp.png'
-description: 'Description of the article'
+cover_image: 'https://raw.githubusercontent.com/sn0w-m0nkey/dev.to/refs/heads/master/blog-posts/Creating-a-GitHub-workflow-1/assets/GitHub_Logo_Banner.png'
+description: ''
 tags: githubactions, netcore, github, azure
-series:
+series: 'GitHub workflows'
 canonical_url:
 --- 
-
-[//]: <> (Part 1)
-
-[//]: <> (Part 2)
 
 When learning how to deploy .NET apps to Azure I struggled to find to find quality resources specific to my needs. I couldn't find one single resorce with a solid example of what I wanted.
 
@@ -40,14 +36,14 @@ My learning is still in progress and after several pretty messy but still succes
 - Add the following code blocks:
 
 
-#### Give your workflow a name:
+### Give your workflow a name:
 
 ```
 name: Deploy .NET App to Azure App Service
 ```
 
 
-#### Define the trigger 
+### Define the trigger 
 In this example, the workflow is run whenever a push is made to main branch, and workflow_dispatch enables it to be run manually from GitHub. 
 Follow this [link](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows) to see all the trigger options you have.
 
@@ -60,7 +56,7 @@ on:
 ```
 
 
-#### Configure the workflow environment
+### Configure the workflow environment
 
 ```
 jobs:
@@ -70,13 +66,13 @@ jobs:
 ```
 
 
-#### Now we start creating the workflow
+### Now we start creating the workflow
 ```
     steps:
 ```
 
 
-#### Fetch the code from your repository
+### Fetch the code from your repository
 
 ```
       - name: Checkout codedepen
@@ -84,7 +80,7 @@ jobs:
 ```
 
 
-#### Install .NET Core to build your application
+### Install .NET Core to build your application
 
 Set the `dotnet-version` to the version you're using.
 
@@ -96,7 +92,7 @@ Set the `dotnet-version` to the version you're using.
 ```
 
 
-#### Download all dependencies
+### Download all dependencies
 
 ```
       - name: Restore dependencies
@@ -104,7 +100,7 @@ Set the `dotnet-version` to the version you're using.
 ```
 
 
-#### Publish the application in release mode to the publish folder
+### Publish the application in release mode to the publish folder
 
 `-c` defines the build configuration which in this workflow is `Release`.
 `-o` defines the output directory which is `./publish`.
@@ -116,7 +112,7 @@ More information on `dotnet publish` can be found [here](https://learn.microsoft
 ``` 
 
 
-#### Deploy the application using the publish profile you saved earlier
+### Deploy the application using the publish profile you saved earlier
 
 ```
       - name: Deploy to Azure Web App
