@@ -8,9 +8,7 @@ series: 'GitHub workflows'
 canonical_url:
 ---
 
-For the end result, skip to the bottom of the page.
-
-As soon as I finished the basic workflow in [Part 1](INSERT_LINK_HERE) TODO, I started working on adding testing. I then separated the code into different jobs to make it more readable and to group relevant code together.
+*For the end result, skip to the bottom of the page.*
 
 If you feel some explanation is missing from a code block, maybe check [Part 1](INSERT_LINK_HERE) TODO.
 

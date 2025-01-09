@@ -8,23 +8,23 @@ series: 'GitHub workflows'
 canonical_url:
 --- 
 
-When learning how to deploy .NET apps to Azure I struggled to find to find quality resources specific to my needs. I couldn't find one single resorce with a solid example of what I wanted.
+*For the end result, skip to the bottom of the page.*
 
-All I had to start with was the workflow that my Azure App Service created for me so I took that and reverse engineered it attempting to figure out what each step did.
+When learning how to deploy .NET apps to Azure I struggled to find to find a solid example specific to my needs. 
 
-My learning is still in progress and after several pretty messy but still successful attempts at creating a workflow, I came up with what you see below. It's an extremely basic example and I've extended it since then, and I will document those updates soon.
+My learning is still in progress and after several messy but still successful attempts, I came up with what you see below. It's an extremely basic example and I intend to build on it in future posts.
 
 
 ## Prerequisites
 
-1. Azure Setup:
- - Create an Azure App Service configured for .NET hosting.
- - Obtain the **publish profile** of the App Service:
+- Azure Setup:
+  - Create an Azure App Service configured for .NET hosting.
+  - Obtain the **publish profile** of the App Service:
      - Go to your App Service in the Azure portal.
      - Navigate to **Deployment Center** > Get **Publish Profile**, and download it.
-2. GitHub Setup:
- - Your GitHub repository should contain your .NET web app source code.
- - Save the App Service **publish profile** as a secret
+- GitHub Setup:
+  - Your GitHub repository should contain your .NET web app source code.
+  - Save the App Service **publish profile** as a secret
      - Go to your repo > **Settings** > **Secrets & Variables** > **Actions** > **New Repository Secret**.
      - Name it `AZURE_PUBLISH_PROFILE` and set the value to the content of the publish profile file you downloaded.
 
