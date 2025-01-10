@@ -183,8 +183,6 @@ This step is optional and you may prefer to use the following step.
 
 Add a new job to the workflow run called Test Results so that the tests can be viewed easily and in detail in the workflow run on GitHub.
 
-![Test Results](./assets/GitHub_Logo_Banner.png 'Test Results')
-
 ```
       - name: Add Dorny test results to the workflow run
         uses: dorny/test-reporter@v1
