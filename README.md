@@ -41,6 +41,11 @@ There's a `dev-to-git.json` file where you can define an array of blog posts, e.
 This repository is made to **edit** a blog post. Whether it's published or just a draft, you **have to create it** on dev.to directly. Unfortunately, dev.to does not display the ID of the blog post on the page. So once it's created, you can open your browser console and paste the following code to retrieve the blog post ID:  
 `$('div[data-article-id]').getAttribute('data-article-id')`
 
+## How do I get raw URLs for GitHub repository files?
+Append ?raw=true to the end of the GitHub URL
+
+e.g. https://github.com/sn0w-m0nkey/dev.to/blob/master/blog-posts/Basic-GitHub-workflow/assets/GitHub_Logo_Banner.png?raw=true
+
 ## How do I configure every blog post individually?
 
 A blog post has to have a [**front matter**](https://dev.to/p/editor_guide) header. You can find an example in this repository here: https://github.com/maxime1992/dev.to/blob/master/blog-posts/name-of-your-blog-post/name-of-your-blog-post.md

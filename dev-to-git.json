@@ -1,14 +1,18 @@
 [
     {
-      "id": 2132351,
+      "id": 2234317,
       "relativePathToArticle": "./blog-posts/Basic-GitHub-workflow/Basic-GitHub-workflow.md"
     },
     {
-      "id": 2139689,
+      "id": 2234318,
       "relativePathToArticle": "./blog-posts/GitHub-workflow-with-testing/GitHub-workflow-with-testing.md"
     },
     {
       "id": 2196079,
       "relativePathToArticle": "./blog-posts/Deleting-all-artifacts-from-a-GitHub-repository/Deleting-all-artifacts-from-a-GitHub-repository.md"
+    },
+    {
+      "id": 2234291,
+      "relativePathToArticle": "./blog-posts/Entity-Framework-migrations-workflow/Entity-Framework-migrations-workflow.md"
     }
 ]

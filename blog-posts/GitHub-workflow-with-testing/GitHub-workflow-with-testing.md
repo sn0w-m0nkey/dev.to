@@ -1,9 +1,9 @@
 ---
 published: false
-title: 'Creating a GitHub workflow for Azure App Services with testing'
-cover_image: 'https://raw.githubusercontent.com/sn0w-m0nkey/dev.to/refs/heads/master/blog-posts/Creating-a-GitHub-workflow-2/assets/GitHub_Logo_Banner.png'
+title: 'Creating a GitHub workflow for .NET Core and Azure App Services with testing'
+cover_image: 'https://raw.githubusercontent.com/sn0w-m0nkey/dev.to/refs/heads/master/blog-posts/GitHub-workflow-with-testing/assets/GitHub_Logo_Banner.png'
 description: ''
-tags: githubactions, netcore, github, azure
+tags: github, githubactions, netcore, azure
 series: 'GitHub workflows'
 canonical_url:
 ---

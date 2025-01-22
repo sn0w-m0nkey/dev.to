@@ -3,7 +3,7 @@ published: false
 title: 'Creating a GitHub workflow to deploy a .NET Core app to an Azure App Service - Part 2: Adding Testing'
 cover_image: 'https://raw.githubusercontent.com/sn0w-m0nkey/dev.to/refs/heads/master/blog-posts/Creating-a-GitHub-workflow-2/assets/GitHub_Logo_Banner.png'
 description: ''
-tags: githubactions, netcore, github, azure
+tags: github, githubactions, netcore, azure
 series: 'GitHub workflows'
 canonical_url:
 ---
