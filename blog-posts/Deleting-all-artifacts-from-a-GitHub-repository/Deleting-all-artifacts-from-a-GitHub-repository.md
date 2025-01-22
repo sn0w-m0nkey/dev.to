@@ -2,8 +2,8 @@
 published: false
 title: 'Deleting all artifacts from a GitHub repository'
 cover_image: 'https://raw.githubusercontent.com/sn0w-m0nkey/dev.to/refs/heads/master/blog-posts/Deleting-all-artifacts-from-a-GitHub-repository/assets/GitHub_Logo_Banner.png'
-description: 'Description of the article'
-tags: githubactions, github, artifacts
+description: ''
+tags: github, githubactions, artifacts
 series: 'GitHub workflows'
 canonical_url:
 ---
