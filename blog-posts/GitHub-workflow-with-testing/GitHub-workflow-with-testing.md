@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: 'Creating a GitHub workflow for .NET Core and Azure App Services with testing'
 cover_image: 'https://raw.githubusercontent.com/sn0w-m0nkey/dev.to/refs/heads/master/blog-posts/GitHub-workflow-with-testing/assets/GitHub_Logo_Banner.png'
 description: ''
@@ -10,7 +10,7 @@ canonical_url:
 
 *For the end result, skip to the bottom of the page.*
 
-If you feel some explanation is missing from a code block, maybe check [Part 1](INSERT_LINK_HERE) TODO.
+If you feel some explanation is missing from a code block, maybe check [Part 1](https://dev.to/sn0w_m0nkey/creating-a-basic-github-workflow-for-net-core-and-azure-app-services-2h1p).
 
 
 ## New Workflow
@@ -68,7 +68,7 @@ We'll add the steps for each job next.
 
 ### Fetch the code from your repository
 
-Add the following code from [Part 1](INSERT_LINK_HERE) as the first **build** step.
+Add the following code from [Part 1](https://dev.to/sn0w_m0nkey/creating-a-basic-github-workflow-for-net-core-and-azure-app-services-2h1p) as the first **build** step.
 
 ```
       - name: Checkout code
@@ -98,7 +98,7 @@ Cache dependencies or build outputs to speed up future workflow runs.
 
 ### Restore dependencies, build the project
 
-This step was in [Part 1](INSERT_LINK_HERE).
+This step was in [Part 1](https://dev.to/sn0w_m0nkey/creating-a-basic-github-workflow-for-net-core-and-azure-app-services-2h1p).
 
 ```
       - name: Restore dependencies
@@ -220,7 +220,7 @@ Once again we download the built artifact we uploaded in the **build** step, red
 
 ### Deploy to Azure
 
-This step needs you to have copied your **publish profile** from Azure to your GitHub secrets. Refer to [Part 1](INSERT_LINK_ HERE).
+This step needs you to have copied your **publish profile** from Azure to your GitHub secrets. Refer to [Part 1](https://dev.to/sn0w_m0nkey/creating-a-basic-github-workflow-for-net-core-and-azure-app-services-2h1p HERE).
 
 
 ## The end result

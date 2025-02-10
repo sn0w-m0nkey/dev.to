@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: 'Creating a basic GitHub workflow for .NET Core and Azure App Services'
 cover_image: 'https://raw.githubusercontent.com/sn0w-m0nkey/dev.to/refs/heads/master/blog-posts/Basic-GitHub-workflow/assets/GitHub_Logo_Banner.png'
 description: ''
